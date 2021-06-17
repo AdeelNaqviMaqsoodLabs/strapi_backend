@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "items",
+  "info": {
+    "name": "items",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "food": {
+      "model": "food"
+    },
+    "restaurant": {
+      "model": "restaurants",
+      "via": "items"
+    }
+  }
+}
