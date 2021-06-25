@@ -11,6 +11,7 @@ module.exports = {
     beforeCreate: async (data) => {
       let items = await strapi.query("items").find({ id: data.items });
       let amount = 0;
+
       for (let i = 0; i < items.length; i++) {
         amount += items[i].quantity * items[i].food.price;
       }

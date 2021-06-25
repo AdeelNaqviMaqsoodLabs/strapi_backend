@@ -9,9 +9,11 @@ module.exports = (strapi) => {
     initialize() {
       strapi.app.use(async (ctx, next) => {
         try {
+       
           await next();
         } catch (error) {
           Sentry.captureException(error);
+      
           throw error;
         }
       });
