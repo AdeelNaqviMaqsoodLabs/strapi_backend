@@ -19,7 +19,8 @@
       "type": "string"
     },
     "foods": {
-      "collection": "food"
+      "collection": "food",
+      "via": "restaurant"
     },
     "items": {
       "via": "restaurant",
