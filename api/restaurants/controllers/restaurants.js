@@ -58,7 +58,7 @@ module.exports = {
         throw "No item Sold yet";
       } else {
         console.log("Data  of Sold food", resdata);
-        return resdata;
+        return resdata[0];
       }
     } catch (error) {
       let err = {
