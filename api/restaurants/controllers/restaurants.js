@@ -44,7 +44,7 @@ module.exports = {
 
       let resdata = await strapi.connections.default.raw(
         `SELECT  *  ,SUM(quantity)  FROM orders o JOIN items  i ON i.restaurant=o.restaurant 
-        JOIN foods f 
+        JOIN foods t 
         where o.restaurant=${id}
         GROUP BY food
         ORDER BY SUM(quantity) DESC
@@ -55,7 +55,7 @@ module.exports = {
       );
       console.log("dataaaa", resdata);
       if (!resdata.length) {
-        throw "No item Sold yet.";
+        throw "No item Sold yet. ";
       } else {
         console.log("Data  of Sold food", resdata);
         return resdata[0];
