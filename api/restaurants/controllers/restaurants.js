@@ -43,18 +43,22 @@ module.exports = {
       const { id } = ctx.params;
 
       let resdata = await strapi.connections.default.raw(
-        `SELECT  * ,SUM(quantity)  FROM orders o JOIN items i ON i.restaurant=o.restaurant 
+        `SELECT  *  ,SUM(quantity)  FROM orders o JOIN items  i ON i.restaurant=o.restaurant 
+        JOIN foods f 
         where o.restaurant=${id}
         GROUP BY food
         ORDER BY SUM(quantity) DESC
+
+       
+       
         `
       );
-
+      console.log("dataaaa", resdata);
       if (!resdata.length) {
         throw "No item Sold yet";
       } else {
         console.log("Data  of Sold food", resdata);
-        return resdata[0];
+        return resdata;
       }
     } catch (error) {
       let err = {
